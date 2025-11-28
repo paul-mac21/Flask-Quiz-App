@@ -21,11 +21,11 @@ Made using Flask, Python, and MySQL
 - 🌐 HTML
 - 😎 CSS
 
-# Setup/Installation Instructions
+# ⚙️ Setup/Installation Instructions
 
 ### Step 1. Clone the repository
-git clone 
-cd CSC226-FINAL
+git clone https://github.com/paul-mac21/Flask-Quiz-App.git
+cd Flask-Quiz-App
 
 ### Step 2. Set up virtual environment 
 in terminal run:  
@@ -51,4 +51,9 @@ make sure your virtual environment is active as mentioned in step 2
 enter the following into the terminal:  
 python app.py  
 follow the link pasted nto terminal( Should look something like "http://127.0.0.1:5000")  
+
+# 🏗️ Potential Additions Being worked on
+- option to delete quizzes you made
+- option to edit your own quizzes
+- user leaderboards
 
