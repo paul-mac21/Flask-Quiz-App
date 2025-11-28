@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>Available quizzes</h1>
+{% if quizes %}
+    <ul class ="quiz-list">
+    {% for quiz in quizes %}
+        <li class ="quiz-item">
+            <a href ="{{ url_for('take_quiz', quiz_id=quiz.qid) }}">{{ quiz.title }}</a>
+            <div class ="quiz-maker">
+                Created by {{ quiz.username }} on: {{ quiz.time_created.strftime('%Y-%m-%d') }}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No quizzes currently exist. Feel free to create your very own!</p>
+{% endif %}
+
+{% if session.get('user_id') %}
+    <a class="button" href ="{{ url_for('create_quiz') }}">Create New Quiz</a>
+{% else %}
+    <p><a href ="{{ url_for('register') }}">Register</a> or <a href ="{{ url_for('login') }}">Login</a> to create your own quizzes!</p>
+{% endif %}
+{% endblock %}

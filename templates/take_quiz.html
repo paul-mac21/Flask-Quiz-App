@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ quiz.title }}</h1>
+<p class ="quiz-maker">Created by: {{ quiz.username }}</p>
+
+{% if questions %}
+    <form method="POST" class ="form-card">
+        <ol class="question-list">
+            {% for q in questions %}
+                <li class="question-item">
+                    <p><strong>{{ q.q_text }}</strong></p>
+                    {% if q.choices %}
+                        {% for c in q.choices %}
+                            <div class="choice-row">
+                                <input
+                                    type="radio"
+                                    name="question_{{ q.lid }}"
+                                    id="choice_{{ c.cid }}"
+                                    value="{{ c.cid }}"
+                                    required
+                                >
+                                <label for="choice_{{ c.cid }}">{{ c.c_text }}</label>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p><em>No choices available for this question.</em></p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+        <button type="submit" class="button">Submit Answers</button>
+    </form>
+    {% if score is not none %}
+        <p class="score-message">You scored {{ score }} out of {{ total_questions }}.</p>
+    {% endif %}
+{% else %}
+    <p>No questions available for this quiz.</p>
+{% endif %}
+<a class ="button" href ="{{ url_for('index') }}">Back to Quizzes</a>
+{% endblock %}

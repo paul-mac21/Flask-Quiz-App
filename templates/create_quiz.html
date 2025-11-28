@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a New Quiz</h1>
+<form method="POST" class ="form-card">
+    <label for="title">Quiz Title</label>
+    <input type="text" id="title" name="title" required>
+    <h3>Questions (supports up to 10, also each question must have 4 choices to choose from)</h3>
+    {% for qnum in range(1,11) %}
+        <div class="question-block">
+            <h4>Question {{ qnum }}</h4>
+            <label for="q_{{ qnum }}">Question Text</label>
+            <input type="text" id="q_{{ qnum }}" name="question_{{ qnum }}" {% if qnum == 1 %} required {% endif %}>
+            <p class="small-text">Choices (Select which one of the choices is the correct answer)</p>
+            {% for cnum in range(1,5) %}
+                <div class="choice-row">
+                    <input type="radio" name="correct_choice_{{ qnum }}" value="{{ cnum }}" {% if cnum == 1 %} checked {% endif %}>
+                    <input type="text" name="question_{{ qnum }}_choice_{{ cnum }}" placeholder="Choice {{ cnum }}" {% if qnum == 1 and cnum <= 2 %} required {% endif %}>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+    {% endfor %}
+    <button type="submit" class="button">Create Quiz</button>
+</form>
+{% endblock %}
