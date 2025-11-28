@@ -24,7 +24,7 @@ Made using Flask, Python, and MySQL
 # ⚙️ Setup/Installation Instructions
 
 ### Step 1. Clone the repository
-git clone https://github.com/paul-mac21/Flask-Quiz-App.git
+git clone https://github.com/paul-mac21/Flask-Quiz-App.git  
 cd Flask-Quiz-App
 
 ### Step 2. Set up virtual environment 
